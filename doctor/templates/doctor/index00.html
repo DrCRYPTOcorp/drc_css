@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <title>INDEX</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INDEX</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/style.css' %}">
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!--banner-->
+{% load staticfiles %}
+<section id="banner1" class="banner1">
+    <div class="bg-color">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'doctor:index' %}"><img src="{% static 'doctor/img/logo.png' %}" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="#service">Services</a></li>
+                            <li class=""><a href="#aboutus">About</a></li>
+                            {% if user.is_active %}
+                                <li>
+                                    <a href="{% url 'doctor:doctor_form' user.pk %}">DOCTOR'S FORM</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout' %}">LOGOUT</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'doctor:profile' user.pk %}">MY PAGE</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                <li class=""><a href="{% url 'login' %}">Sign in</a></li>
+                                </li>
+                                <li>
+                                <li class=""><a href="{% url 'signup' %}">Sign up</a></li>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="banner-info">
+                    <div class="banner-logo text-center">
+                        <!-- 로고 어째야할지 생각을 좀 해보고... by sung.   <img src="{% static 'doctor/img/logo.png' %}" class="img-responsive"> -->
+                    </div>
+                    <div class="banner-text text-center">
+                        <h1 class="white"> We are <br>
+                                           Dr.CRPYTO</h1>
+                        <p>Healthcare at your desk!!<br>
+                            닥터크립토가 여러분에게 보다 편리하고 안전한 서비스를 제공할 것입니다.
+                        </p>
+                        <a href="https://drive.google.com/file/d/19pBDagfbq39z0hDBHOgELraSAl-kGk7H/view?usp=sharing" class="btn btn-appoint" target="_blank"> White Paper </a>
+                    </div>
+                    <div class="overlay-detail text-center">
+                        <a href="#service"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if messages %}
+    {% for msg in messages %}
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{msg.message}}
+        </div>
+    {% endfor %}
+{% endif %}
+<!--service-->
+<section id="service" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-offset-0 col-lg-7">
+                <h2 class="ser-title">높은 보안성</h2>
+                <hr class="botm-line">
+                <p>블록체인(BlockChain)은 보안성, 무결성을 제공하므로 이 기능을 통하여 환자의 기록에 대한 해킹에 대한 위협을 줄이며 신뢰된 알고리즘을 통하여 데이터가 위 · 변조 되지 않았다는 것을 확인 가능</p>
+            </div>
+            <div class="col-md-4 col-sm-4 col-lg-5">
+                <div class="service-info">
+                    <div class="icon">
+                        <br>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user-md"></i>     <p> 나중에 이미지를 넣을 자리입니당~</p>
+                    </div>
+                </div>
+                <div class="service-info"> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ service-->
+
+
+<!--service-->
+<section id="service" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-offset-0 col-lg-7">
+                <h2 class="ser-title">높은 접근성</h2>
+                <hr class="botm-line">
+                <p>개인의 의료정보를 분산화된 데이터베이스에 저장함으로써 사용자는 휴대폰 어플을 통해 언제 어디서든 편리하게 의료 정보에 접근할 수 있다. 때문에 의료기관에 대한 의존도를 낮춤으로써 개인에게 높은 의료정보의 접근성을 제공한다.</p>
+            </div>
+            <div class="col-md-4 col-sm-4 col-lg-5">
+                <div class="service-info">
+                    <div class="icon">
+                        <br><br><br>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="service-info"> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ service-->
+
+<!--service-->
+<section id="service" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-offset-0 col-lg-7">
+                <h2 class="ser-title">환자 중심의 의료데이터 관리</h2>
+                <hr class="botm-line">
+                <p>환자는 자신의 의무기록을 Dr.CRYPTO를 통해 통합하여 저장하고 관리할 수 있다. 병원별로 파편화되어 있던 정보를 편리하게 열람할 수 있고, 타병원의 진료를 위해 필요한 정보를 블록체인 상에서 전송할 수 있다. 이에 따라 중복되거나 불필요한 검사를 방지하여 환자의 부담을 줄이고 의료의 효율을 높일 수 있다.</p>
+            </div>
+            <div class="col-md-4 col-sm-4 col-lg-5">
+                <div class="service-info">
+                    <div class="icon">
+                        <br><br><br>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="service-info"> </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--/ service-->
+
+
+
+
+
+<!--
+<section id="cta-1" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="schedule-tab">
+                <div class="col-md-4 col-sm-4 bor-left">
+                    <div class="mt-boxy-color"></div>
+                    <div class="medi-info">
+                        <h3>Emergency Case</h3>
+                        <p>I am text block. Edit this text from Appearance / Customize / Homepage header columns. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <a href="#" class="medi-info-btn">READ MORE</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="medi-info">
+                        <h3>Emergency Case</h3>
+                        <p>I am text block. Edit this text from Appearance / Customize / Homepage header columns. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <a href="#" class="medi-info-btn">READ MORE</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 mt-boxy-3">
+                    <div class="mt-boxy-color"></div>
+                    <div class="time-info">
+                        <h3>Opening Hours</h3>
+                        <table style="margin: 8px 0px 0px;" border="1">
+                            <tbody>
+                            <tr>
+                                <td>Monday - Friday</td>
+                                <td>8.00 - 17.00</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>9.30 - 17.30</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>9.30 - 15.00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="section-title">
+                    <h2 class="head-title lg-line">The Medilap <br>Ultimate Dream</h2>
+                    <hr class="botm-line">
+                    <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+                    <a href="" style="color: #0cb8b6; padding-top:10px;">Know more..</a>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div style="visibility: visible;" class="col-sm-9 more-features-box">
+                    <div class="more-features-box-text">
+                        <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
+                        <div class="more-features-box-text-description">
+                            <h3>It's something important you want to know.</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                        </div>
+                    </div>
+                    <div class="more-features-box-text">
+                        <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
+                        <div class="more-features-box-text-description">
+                            <h3>It's something important you want to know.</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+
+<!--doctor team-->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="ser-title">Our Members!</h2>
+                <hr class="botm-line">
+            </div>
+            <div class="col-md-1 col-sm-1">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="thumbnail">
+                    <img src={% static 'doctor/img/경민.png' %} alt="..." class="team-img">
+                    <div class="caption">
+                        <h3>성경민</h3>
+                        <p>Software Engineer</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="thumbnail">
+                    <img src={% static 'doctor/img/성원.png' %} alt="..." class="team-img">
+                    <div class="caption">
+                        <h3>오성원</h3>
+                        <p>UI/UX Designer</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="thumbnail">
+                    <img src={% static 'doctor/img/성준.png' %} alt="..." class="team-img">
+                    <div class="caption">
+                        <h3>박성준</h3>
+                        <p>Software Engineer</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="thumbnail">
+                    <img src={% static 'doctor/img/수호.png' %} alt="..." class="team-img">
+                    <div class="caption">
+                        <h3>최수호</h3>
+                        <p>UI/UX Designer</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                <div class="thumbnail">
+                    <img src={% static 'doctor/img/종진.png' %} alt="..." class="team-img">
+                    <div class="caption">
+                        <h3>이종진</h3>
+                        <p>Software Engineer</p>
+                        <ul class="list-inline">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-sm-1">
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ doctor team-->
+
+<script src="{% static 'doctor/js/jquery.min.js' %}" type="text/javascript" ></script>
+<script src="{% static 'doctor/js/jquery.easing.min.js' %}" type="text/javascript" ></script>
+<script src="{% static 'doctor/js/bootstrap.min.js' %}" type="text/javascript" ></script>
+<script src="{% static 'doctor/js/custom.js' %}" type="text/javascript" ></script>

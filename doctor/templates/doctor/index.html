@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <title>INDEX</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INDEX</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/style.css' %}">
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!--banner-->
+{% load staticfiles %}
+<section id="banner1" class="banner1">
+    <div class="bg-color">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'doctor:index' %}"><img src="{% static 'doctor/img/logo.png' %}" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="#service">Services</a></li>
+                            <li class=""><a href="#aboutus">About</a></li>
+                            {% if user.is_active %}
+                                <li>
+                                    <a href="{% url 'doctor:doctor_form' user.pk %}">DOCTOR'S FORM</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout' %}">LOGOUT</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'doctor:profile' user.pk %}">MY PAGE</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                <li class=""><a href="{% url 'login' %}">Sign in</a></li>
+                                </li>
+                                <li>
+                                <li class=""><a href="{% url 'signup' %}">Sign up</a></li>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+          <div class="row">
+              <div class="banner-info">
+                  <div class="banner-logo text-center">
+                      <img src="{% static 'doctor/img/logo.png' %}" class="img-responsive">
+                  </div>
+                  <div class="banner-text text-center">
+
+                      <h1>
+                              블록체인을 기반으로 보다 편리하고 <br>
+                              안전한 의료정보 공유 서비스를 제공합니다.
+                      </h1>
+                      <a href="https://drive.google.com/file/d/19pBDagfbq39z0hDBHOgELraSAl-kGk7H/view?usp=sharing" class="btn btn-appoint" target="_blank">
+                          White Paper </a>
+                  </div>
+                  <div class="overlay-detail text-center">
+                      <a href="#service">
+                          <i class="fa fa-angle-down"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+{% if messages %} {% for msg in messages %}
+<div class="alert alert-info alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  {{msg.message}}
+</div>
+{% endfor %} {% endif %}
+
+  <!--why drc-->
+
+  <section id="testimonial" class="section-padding">
+
+    <div class="container">
+      <div class="container">
+        <div class="mainContainer whyDrc">
+          <div class="row">
+
+          <div class="col-md-12">
+            <h2 class="ser-title">Why Dr.CRYPTO</h2>
+            <hr class="botm-line">
+            <br><br>
+          </div>
+
+          </div>
+          <div class="col-md-4 col-sm-4" >
+            <div class="">
+              <div class="">
+                <div class="" >
+                  <img src="{% static 'doctor/img/access.png' %}" alt="">
+                  <p class="whyDrc-contents-text1"style="padding-left : 36px;">높은 접근성</p>
+                  <p class="whyDrc-contents-text2"></p>
+                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
+                    사용자는 웹과 앱을 통해
+                    <br> 언제 어디서든 편리하게
+                    <br> 자신의 의료 정보를
+                    <br> 이용할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-4">
+            <div class="">
+              <div class="">
+                <div class="">
+                  <img src="{% static 'doctor/img/patient.png' %}" alt="">
+                  <p class="whyDrc-contents-text1" style="padding-left : 36px;"> 환자 중심 </p>
+                  <p class="whyDrc-contents-text2"></p>
+                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
+                    병원별로 파편화되어 있던
+                    <br>정보를 하나의 플랫폼에서
+                    <br> 열람할 수 있고 진료를 위해
+                    <br> 필요한 정보를 간편히
+                    <br> 전송할 수 있습니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-4">
+            <div class="">
+              <div class="">
+                <div class="">
+                  <img src="{% static 'doctor/img/security.png' %}" alt="">
+                  <p class="whyDrc-contents-text1" style="padding-left : 36px;"> 높은 보안성 </p>
+                  <p class="whyDrc-contents-text2"></p>
+                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
+                    Dr.CRYPTO는 의료데이터를
+                    <br> 블록체인에 기록하여
+                    <br> 데이터의 위변조를 방지하여
+                    <br> 환자 데이터의 무결성을 보장합니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--/ how it works-->
+  
+  <section id="service" class="section-padding">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">How It Works</h2>
+          <hr class="botm-line">
+          <br><br>
+        </div>
+        <br><br>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-image">
+              <img src={% static 'doctor/img/hiw1.png' %} alt="..." class="">
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Step 1</h4>
+                <h4 class="subheading">요청</h4>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  <br> 환자가
+                  <br> 의무기록 요청
+                  <br>
+                </p>
+              </div>
+            </div>
+            <div class="line"></div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <img src={% static 'doctor/img/hiw2.png' %} alt="..." class="">
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Step 2</h4>
+                <h4 class="subheading">입력</h4>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  <br> 의료인이
+                  <br> 환자가 원하는 형식의
+                  <br> 의무기록 작성 후 전송
+                  <br>
+                </p>
+              </div>
+            </div>
+            <div class="line"></div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <img src={% static 'doctor/img/hiw3.png' %} alt="..." class="">
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Step 3</h4>
+                <h4 class="subheading">데이터 전송</h4>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  <br> 환자가 원하는
+                  <br> 의료기관으로 데이터 전송
+                  <br>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+
+  </section>
+  <!--/ service-->
+
+  <!--testimonial-->
+  <section id="testimonial" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">see what patients are saying?</h2>
+          <hr class="botm-line">
+          <br><br>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details" style="font-size : 18px; line-height:30px;">
+            <!-- Paragraph -->
+            <p> 이전에는 진단서를 발급받기 위해서 병원에 직접 방문해야 했지만, Dr.CRYPTO 덕분에 이제는 집에서 쉽게 진단서를 발급받을 수 있어요.</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#">
+              <img src="img/thumb.png" alt="" class="img-responsive">
+            </a>
+            <!-- User Name -->
+            <h3>김은숙
+              <span>서울</span>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details" style="font-size : 18px; line-height:30px;">
+            <!-- Paragraph -->
+            <p>내가 어디서 어떤 진료를 받았는지 헷갈리고 기억이 나지 않는 경우가 있었는데, 이제는 Dr.CRYPTO 에서 간편하게 확인할 수 있습니다.</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#">
+              <img src="img/thumb.png" alt="" class="img-responsive">
+            </a>
+            <!-- User Name -->
+            <h3>이지훈
+              <span>부산</span>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details" style="font-size : 18px; line-height:30px;">
+            <!-- Paragraph -->
+            <p>Dr.CRYPTO를 이용하여 진단서를 발급받으니까 비용도 절감되고 빠르게 다른 병원으로 전송할 수 있어 중복되는 검사를 받지 않아도 되어 너무 좋습니다. </p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#">
+              <img src="img/thumb.png" alt="" class="img-responsive">
+            </a>
+            <!-- User Name -->
+            <h3>박상진
+              <span>제주</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ testimonial-->
+
+
+  <!--about Us-->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">Our Members!</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-1 col-sm-1">
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static 'doctor/img/경민.png' %} alt="..." class="team-img">
+            <div class="caption">
+              <h3>성경민</h3>
+              <p>Software Engineer</p>
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static 'doctor/img/성원.png' %} alt="..." class="team-img">
+            <div class="caption">
+              <h3>오성원</h3>
+              <p>UI/UX Designer</p>
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static 'doctor/img/성준.png' %} alt="..." class="team-img">
+            <div class="caption">
+              <h3>박성준</h3>
+              <p>Software Engineer</p>
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static 'doctor/img/수호.png' %} alt="..." class="team-img">
+            <div class="caption">
+              <h3>최수호</h3>
+              <p>UI/UX Designer</p>
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static 'doctor/img/종진.png' %} alt="..." class="team-img">
+            <div class="caption">
+              <h3>이종진</h3>
+              <p>Software Engineer</p>
+              <ul class="list-inline">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1 col-sm-1">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ about us-->
+
+  <!-- contact us-->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+          <h2 class="ser-title">Contact us</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8 col-sm-8 marb20">
+          <div class="contact-info">
+            <h3 class="cnt-ttl">문의사항이 있으시면 남겨주세요</h3>
+            <div class="space"></div>
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control br-radius-zero" id="name" placeholder="Your Name" data-rule="minlen:4"
+                  data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control br-radius-zero" name="email" id="email" placeholder="Your Email" data-rule="email"
+                  data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control br-radius-zero" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4"
+                  data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control br-radius-zero" name="message" rows="5" data-rule="required" data-msg="Please write something for us"
+                  placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
+
+              <div class="form-action">
+                <button type="submit" class="btn btn-form">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-2"></div>
+
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- contact us-->
+
+
+  <!--footer-->
+  <footer id="footer">
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 marb20">
+                    <div class="ftr-tle">
+                        <h4 class="white no-padding">Dr.CRYPTO</h4>
+                    </div>
+                    <div class="info-sec">
+                        <p>블록체인 기반 개인 의료정보 공유 플랫폼</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 marb20">
+                    <div class="ftr-tle">
+                        <h4 class="white no-padding">Sponsored By</h4>
+                    </div>
+                    <div class="info-sec">
+                        <ul class="quick-info">
+                            <li>
+                                <a href="index.html">경기도과학진흥원</a>
+                            </li>
+                            <li>
+                                <a href="#service">TalentX</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Dnext</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 marb20">
+                    <div class="ftr-tle">
+                        <h4 class="white no-padding">Follow us</h4>
+                    </div>
+                    <div class="info-sec">
+                        <ul class="social-icon">
+                            <li class="bglight-blue">
+                                <i class="fa fa-facebook"></i>
+                            </li>
+                            <li class="bgred">
+                                <i class="fa fa-google-plus"></i>
+                            </li>
+                            <li class="bgdark-blue">
+                                <i class="fa fa-linkedin"></i>
+                            </li>
+                            <li class="bglight-blue">
+                                <i class="fa fa-twitter"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-line">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                  © Copyright Medilab Theme. All Rights Reserved
+                  <div class="credits">
+                      Redesigned by LUCY
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </footer>
+
+
+  <script src="{% static 'doctor/js/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/jquery.easing.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/custom.js' %}" type="text/javascript"></script>
+  
+
+</body>
+
+</html>
