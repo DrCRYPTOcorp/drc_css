@@ -32,26 +32,11 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="#service">Services</a></li>
-                            <li class=""><a href="#aboutus">About</a></li>
-                            {% if user.is_active %}
-                                <li>
-                                    <a href="{% url 'doctor:doctor_form' user.pk %}">DOCTOR'S FORM</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'logout' %}">LOGOUT</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'doctor:profile' user.pk %}">MY PAGE</a>
-                                </li>
-                            {% else %}
-                                <li>
-                                <li class=""><a href="{% url 'login' %}">Sign in</a></li>
-                                </li>
-                                <li>
-                                <li class=""><a href="{% url 'signup' %}">Sign up</a></li>
-                                </li>
-                            {% endif %}
+                            <li class=""><a href="#">About</a></li>
+                            <li class=""><a href="#Features">Features</a></li>
+                            <li class=""><a href="#HowItWorks">How It Works</a></li>
+                            <li class=""><a href="#Value">Value</a></li>
+                            <li class=""><a href="#Team">Team</a></li>
                         </ul>
                     </div>
                 </div>
@@ -66,10 +51,10 @@
                   <div class="banner-text text-center">
                     <h1>
                       보다 편리하고 안전한 <br>
-                      의료정보 공유 플랫폼 
+                      블록체인 의료정보 공유 플랫폼 
                     </h1>
                     
-                      <a href="https://drive.google.com/file/d/19pBDagfbq39z0hDBHOgELraSAl-kGk7H/view?usp=sharing" class="btn btn-appoint" target="_blank">
+                      <a href="https://drive.google.com/open?id=1r_tmkrG-mP2KLOxV8GVW5yxmkbCu5c6W" class="btn btn-appoint" target="_blank">
                           White Paper </a>
                   </div>
                   <div class="overlay-detail text-center">
@@ -89,109 +74,91 @@
 </div>
 {% endfor %} {% endif %}
 
-  <!--why drc-->
+  <!--Features-->
 
-  <section id="testimonial" class="section-padding">
+  <section id="Features" class="section-padding">
 
-    <div class="container">
-      <div class="container">
-        <div class="mainContainer whyDrc">
+        <div class="container">
           <div class="row">
 
           <div class="col-md-12">
-            <h2 class="ser-title">Why Dr.CRYPTO</h2>
+            <h2 class="ser-title title-padding">Features</h2>
             <hr class="botm-line">
             <br><br>
           </div>
 
           </div>
+
+          <div class="row">
+
           <div class="col-md-4 col-sm-4" >
-            <div class="">
-              <div class="">
-                <div class="" >
-                  <img src="{% static 'doctor/img/access.png' %}" alt="">
-                  <p class="whyDrc-contents-text1"style="padding-left : 36px;">높은 접근성</p>
-                  <p class="whyDrc-contents-text2"></p>
-                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
-                    사용자는 웹과 앱을 통해
-                    <br> 언제 어디서든 편리하게
-                    <br> 자신의 의료 정보를
-                    <br> 이용할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <img src="{% static 'doctor/img/fea1.png' %}" style="display:block;  margin-left: auto;
+            margin-right: auto;">    
+            <p class="features-text1">병원 방문기록 검색</p>    
+            <p class="features-text2">
+                   나조차 헷갈렸던 여러 병원의 
+              <br> 방문기록을 한 곳에 모두 모아
+              <br> 간편하게 검색할 수 있습니다.
+            </p>
           </div>
 
-          <div class="col-md-4 col-sm-4">
-            <div class="">
-              <div class="">
-                <div class="">
-                  <img src="{% static 'doctor/img/patient.png' %}" alt="">
-                  <p class="whyDrc-contents-text1" style="padding-left : 36px;"> 환자 중심 </p>
-                  <p class="whyDrc-contents-text2"></p>
-                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
-                    병원별로 파편화되어 있던
-                    <br>정보를 하나의 플랫폼에서
-                    <br> 열람할 수 있고 진료를 위해
-                    <br> 필요한 정보를 간편히
-                    <br> 전송할 수 있습니다.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="col-md-4 col-sm-4" >
+              <img src="{% static 'doctor/img/fea2.png' %}" style="display:block; margin-left: auto;
+              margin-right: auto;">   
+              <p class="features-text1">증명서 발급</p>    
+              <p class="features-text2">
+                     병원에 직접 방문하지 않아도
+                <br> 진단서, 소견서와 같은 증명서나
+                <br> 처방전을 발급받을 수 있습니다.
+   
+              </p>
+           </div>
 
-          <div class="col-md-4 col-sm-4">
-            <div class="">
-              <div class="">
-                <div class="">
-                  <img src="{% static 'doctor/img/security.png' %}" alt="">
-                  <p class="whyDrc-contents-text1" style="padding-left : 36px;"> 높은 보안성 </p>
-                  <p class="whyDrc-contents-text2"></p>
-                  <p class="whyDrc-contents-text3" style="padding-left : 32px;">
-                    Dr.CRYPTO는 의료데이터를
-                    <br> 블록체인에 기록하여
-                    <br> 데이터의 위변조를 방지하여
-                    <br> 환자 데이터의 무결성을 보장합니다.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+           <div class="col-md-4 col-sm-4" >
+              <img src="{% static 'doctor/img/fea3.png' %}" style="display:block; margin-left: auto;
+              margin-right: auto;">    
+              <p class="features-text1">다른 기관으로 전송</p>    
+              <p class="features-text2">
+                     발급받은 증명서를 다른 병원이나
+                <br> 약국으로 전송하여 쉽고 빠르게
+                <br> 자신의 의료 정보를 보낼 수 있습니다.
 
+              </p>
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
   </section>
-
+<!---/features-->
 
 
   <!--/ how it works-->
   
-  <section id="service" class="section-padding">
+  <section id="HowItWorks" class="section-padding">
 
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <h2 class="ser-title">How It Works</h2>
-          <hr class="botm-line">
+          <hr class="botm-line-hiw">
           <br><br>
         </div>
-        <br><br>
+        <div class="container">
         <ul class="timeline">
           <li>
             <div class="timeline-image">
-              <img src={% static 'doctor/img/hiw1.png' %} alt="..." class="">
+              <img src={% static 'doctor/img/hiw1.png' %} alt="..." class="img-responsive">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4>Step 1</h4>
-                <h4 class="subheading">요청</h4>
+                <h4 class="subheading">개인의료정보의 필요</h4>
               </div>
               <div class="timeline-body">
                 <p class="text-muted">
-                  <br> 환자가
-                  <br> 의무기록 요청
-                  <br>
+                    <br>환자가 다른병원에서 
+                    <br>진료를 보거나
+                    <br>약국에 처방받기 위해 
+                    <br>개인의료정보를 필요로 함
                 </p>
               </div>
             </div>
@@ -199,19 +166,19 @@
           </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <img src={% static 'doctor/img/hiw2.png' %} alt="..." class="">
+              <img src={% static 'doctor/img/hiw2.png' %} alt="..." class="img-responsive">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4>Step 2</h4>
-                <h4 class="subheading">입력</h4>
+                <h4 class="subheading">환자 개인의료정보 요청</h4>
               </div>
               <div class="timeline-body">
                 <p class="text-muted">
-                  <br> 의료인이
-                  <br> 환자가 원하는 형식의
-                  <br> 의무기록 작성 후 전송
-                  <br>
+                  <br> 환자가 원하는 형식의 
+                  <br> 의료 정보(의무기록) 요청
+                  <br> ex. 진단서, 처방전, 등
+                  
                 </p>
               </div>
             </div>
@@ -219,100 +186,139 @@
           </li>
           <li>
             <div class="timeline-image">
-              <img src={% static 'doctor/img/hiw3.png' %} alt="..." class="">
+              <img src={% static 'doctor/img/hiw3.png' %} alt="..." class="img-responsive">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4>Step 3</h4>
-                <h4 class="subheading">데이터 전송</h4>
+                <h4 class="subheading">의료인의 입력</h4>
               </div>
               <div class="timeline-body">
                 <p class="text-muted">
-                  <br> 환자가 원하는
-                  <br> 의료기관으로 데이터 전송
-                  <br>
+                    <br>의료인이 요청받은 형식의
+                    <br>의료정보(의무기록) 
+                    <br>작성 후 환자에게 전송
                 </p>
               </div>
+              <div class="line"></div>
             </div>
           </li>
+          <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img src={% static 'doctor/img/hiw4.png' %} alt="..." class="img-responsive">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>Step 4</h4>
+                  <h4 class="subheading">환자가 데이터 전송</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">
+                    <br> 환자가 원하는 
+                    <br> 기관(병원, 약국 등)으로 
+                    <br> 의료정보 전송
+                    
+                    <br>
+                  </p>
+                </div>
+              </div>
+              <div class="line"></div>
+            </li>
+          
+            <li>
+                <div class="timeline-image">
+                  <img src={% static 'doctor/img/hiw5.png' %} alt="..." class="img-responsive">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>Step 5</h4>
+                    <h4 class="subheading">기관에서 데이터 이용</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">
+                      <br> 환자가 전송한 
+                      <br> 의료정보를 
+                      <br> 진료 및 처방시 활용
+                    
+                    </p>
+                  </div>
+                </div>
+              </li>
         </ul>
+        <div class="botm-padding"> </div>
+        </div>
       </div>
     </div>
     </div>
 
   </section>
-  <!--/ service-->
+  <!--/ how it works-->
 
-  <!--testimonial-->
-  <section id="testimonial" class="section-padding">
-    <div class="container">
-      <div class="row">
+   <!--value-->
+
+   <section id="Value" class="section-padding">
+
+      <div class="container">
+        <div class="row">
+
         <div class="col-md-12">
-          <h2 class="ser-title">see what patients are saying?</h2>
+          <h2 class="ser-title title-padding">Value</h2>
           <hr class="botm-line">
           <br><br>
         </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="testi-details" style="font-size : 18px; line-height:30px;">
-            <!-- Paragraph -->
-            <p> 이전에는 진단서를 발급받기 위해서 병원에 직접 방문해야 했지만, Dr.CRYPTO 덕분에 이제는 집에서 쉽게 진단서를 발급받을 수 있어요.</p>
-          </div>
-          <div class="testi-info">
-            <!-- User Image -->
-            <a href="#">
-              <img src="img/thumb.png" alt="" class="img-responsive">
-            </a>
-            <!-- User Name -->
-            <h3>김은숙
-              <span>서울</span>
-            </h3>
-          </div>
+
         </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="testi-details" style="font-size : 18px; line-height:30px;">
-            <!-- Paragraph -->
-            <p>내가 어디서 어떤 진료를 받았는지 헷갈리고 기억이 나지 않는 경우가 있었는데, 이제는 Dr.CRYPTO 에서 간편하게 확인할 수 있습니다.</p>
-          </div>
-          <div class="testi-info">
-            <!-- User Image -->
-            <a href="#">
-              <img src="img/thumb.png" alt="" class="img-responsive">
-            </a>
-            <!-- User Name -->
-            <h3>이지훈
-              <span>부산</span>
-            </h3>
-          </div>
+
+        <div class="row">
+
+        <div class="col-md-4 col-sm-4" >
+          <img src="{% static 'doctor/img/access.png' %}" style="display:block; margin-left: auto;
+          margin-right: auto;">    
+          <p class="features-text1">접근성</p>    
+          <p class="features-text2">
+                  개인 의료정보가 필요한 환자는
+              <br>웹과 앱을 통해 언제 어디서든 
+              <br>편리하게 의료 정보를 
+              <br>이용할 수 있습니다.
+          </p>
         </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="testi-details" style="font-size : 18px; line-height:30px;">
-            <!-- Paragraph -->
-            <p>Dr.CRYPTO를 이용하여 진단서를 발급받으니까 비용도 절감되고 빠르게 다른 병원으로 전송할 수 있어 중복되는 검사를 받지 않아도 되어 너무 좋습니다. </p>
-          </div>
-          <div class="testi-info">
-            <!-- User Image -->
-            <a href="#">
-              <img src="img/thumb.png" alt="" class="img-responsive">
-            </a>
-            <!-- User Name -->
-            <h3>박상진
-              <span>제주</span>
-            </h3>
-          </div>
+
+        <div class="col-md-4 col-sm-4" >
+            <img src="{% static 'doctor/img/patient.png' %}" style="display:block; margin-left: auto;
+            margin-right: auto;">   
+            <p class="features-text1">효율성</p>    
+            <p class="features-text2">
+                    병원별로 따로 가지고 있던 정보를
+                <br>하나의 플랫폼에서 확인할 수 있고
+                <br>진료를 위해 필요한 정보를 
+                <br>간편하게 전송할 수 있습니다.
+            </p>
+         </div>
+
+         <div class="col-md-4 col-sm-4" >
+            <img src="{% static 'doctor/img/security.png' %}" style="display:block; margin-left: auto;
+            margin-right: auto;">    
+            <p class="features-text1">보안성</p>    
+            <p class="features-text2">
+                  환자 의료정보를 블록체인에 기록하여
+              <br>데이터가 위변조되는 것을 방지하고
+              <br>정확한 정보를 제공합니다
+            </p>
+        </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!--/ testimonial-->
+</section>
+<!---/value-->
+ 
 
-
-  <!--about Us-->
-  <section id="about" class="section-padding">
+  <!--Team-->
+  <section id="Team" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="ser-title">Our Members!</h2>
+          <h2 class="ser-title title-padding">Team</h2>
           <hr class="botm-line">
+          <br><br><br>
         </div>
         <div class="col-md-1 col-sm-1">
         </div>
@@ -454,7 +460,7 @@
   </section>
   <!--/ about us-->
 
-  <!-- contact us-->
+<!-- 
   <section id="contact" class="section-padding">
     <div class="container">
       <div class="row">
@@ -506,7 +512,7 @@
     </div>
     </div>
   </section>
-  <!-- contact us-->
+-->
 
 
   <!--footer-->
@@ -520,6 +526,8 @@
                     </div>
                     <div class="info-sec">
                         <p>블록체인 기반 개인 의료정보 공유 플랫폼</p>
+                        경기 성남시 분당구 판교로289번길 20,<br>
+                        스타트업캠퍼스 4층 DIGITAL LAB <br>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 marb20">
@@ -527,38 +535,21 @@
                         <h4 class="white no-padding">Sponsored By</h4>
                     </div>
                     <div class="info-sec">
-                        <ul class="quick-info">
-                            <li>
-                                <a href="index.html">경기도과학진흥원</a>
-                            </li>
-                            <li>
-                                <a href="#service">TalentX</a>
-                            </li>
-                            <li>
-                                <a href="#contact">Dnext</a>
+                       TalentX <br>
+                       STARTUP CAMPUS
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 marb20">
                     <div class="ftr-tle">
-                        <h4 class="white no-padding">Follow us</h4>
+                        <h4 class="white no-padding">Contact Us</h4>
                     </div>
                     <div class="info-sec">
-                        <ul class="social-icon">
-                            <li class="bglight-blue">
-                                <i class="fa fa-facebook"></i>
-                            </li>
-                            <li class="bgred">
-                                <i class="fa fa-google-plus"></i>
-                            </li>
-                            <li class="bgdark-blue">
-                                <i class="fa fa-linkedin"></i>
-                            </li>
-                            <li class="bglight-blue">
-                                <i class="fa fa-twitter"></i>
-                            </li>
-                        </ul>
+                        Email ) TalentX083@gmail.com <br>
+                        Tel ) 010-7237-2430 <br>
+                        <p>Facebook )  https://www.facebook.com/Dr-CRYPTO-594209154309885/</p>
+
                     </div>
                 </div>
             </div>
@@ -568,7 +559,7 @@
       <div class="container">
           <div class="row">
               <div class="col-md-12 text-center">
-                  © Copyright Medilab Theme. All Rights Reserved
+                  © Copyright Dr.CRYPTO. All Rights Reserved
                   <div class="credits">
                       Redesigned by LUCY
                   </div>
