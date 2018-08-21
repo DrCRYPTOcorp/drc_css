@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load staticfiles %}
+  <title>Dr.CRYPTO 블록체인 의료데이터 공유 플랫폼</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="Description" content="Etherscan allows you to explore and search the Ethereum blockchain for transactions, addresses, tokens, prices and other activities taking place on Ethereum (ETH)"
+  />
+  <meta name="author" content="etherscan.io" />
+  <meta name="keywords" content="ethereum, explorer, ether, search, blockchain, crypto, currency" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <script src="{% static 'doctor/js/ethscan.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/jquery-ui.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'doctor/js/combine-js-bottom.js' %}" type="text/javascript"></script>
+
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/style-mod.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/style.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/profile.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/perfect-scrollbar.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/line-icons.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/jquery-ui.min.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/custom-head-foot-scroll-blue.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static 'doctor/css/ie8-blocks-plugins-app.css' %}">
+
+
+  <style>
+    @media (max-width: 480px) {
+      .hidden-su-xs {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 481px) {
+      .visible-su-xs {
+        display: none;
+      }
+    }
+  </style>
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  {% load staticfiles %}
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="col-md-12">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'doctor:index' %}">
+            <img src="{% static 'doctor/img/logo.png' %}" class="img-responsive" style="width: 140px; margin-top: -16px;">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="">
+              <a href="#">doctor's form</a>
+            </li>
+            <li class="">
+              <a href="#">my account</a>
+            </li>
+            <li class="">
+              <a href="#">sign in</a>
+            </li>
+            <li class="">
+              <a href="#">sign out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <section id="myAccount" class="section padding">
+    <div class="container" style="height: 65px">
+    </div>
+    <div class="profile container" style="margin-top: 0px">
+      <div class="row">
+        <div>
+          <div class="profile-body">
+            <div align="left" id="divadvert" style="margin-bottom: 11px; margin-top: -10px;">
+              <span id="ContentPlaceHolder1_litIBannerAdd"></span>
+            </div>
+
+            <div class="row margin-bottom-10">
+              <div class="col-sm-12 sm-margin-bottom-10">
+                <div class="panel panel-profile no-bg">
+                  <div class="panel-heading overflow-h" style="height: 300px">
+                    <h2 class="panel-title heading-sm pull-left">
+                      <i class="fa fa-user"></i> 프로필 </h2>
+                      <br>
+                      <div class="panel-heading col-md-12" style="border:0px">
+                      <div class="col-md-8 docInfo">
+                          
+                          이름  :<br>
+                          
+                          지갑주소  :<br>
+                          
+                          의료면허번호  :<br>
+
+                          보유 DRC : <br>
+                      </div>
+    
+                        <div class="col-md-4 docImg">
+                          <img src={% static 'doctor/img/경민.png' %} class="img-circle img-responsive" alt="의사 지갑 주소로 만든 아이콘?">
+                        </div>
+
+                      </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="row margin-bottom-40">
+              <div class="col-sm-6 sm-margin-bottom-20">
+                <div class="panel panel-profile no-bg">
+                  <div class="panel-heading overflow-h">
+                    <h2 class="panel-title heading-sm pull-left">
+                      <i class="fa fa-file"></i> 받은 요청 </h2>
+                  </div>
+                  <div id="scrollbar2" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark" style="height: 580px">
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에(날짜)</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href=''>
+                            <font size="2" color='white'>요청 형식 (ex. 진단서)</font>
+                          </a>
+                        </span>
+                        <small>&gt; 23 초 전에</small>
+                      </div>
+                      <div class="overflow-h">
+                        <p>요청 환자
+                          <a href='' class='address-tag'>김 아무개</a>
+                        </p>
+                        <p>
+                          <a href="">
+                            <b>병명</b>
+                          </a> 요추간판탈출증</p>
+                        <p> 보상 토큰 3
+                          <b>.</b>056 DRC</p>
+                      </div>
+                    </div>
+
+                    <div class="profile-event">
+                      <div class="date-formats" style='width: 135px; height: 65px; margin-top:2px'>
+                        <span>
+                          <a href='/block/6173354'>
+                            <font size="2" color='white'>Block 6173354</font>
+                          </a>
+                        </span>
+                        <small>&gt; 2 mins ago</small>
+                      </div>
+                      <div class="overflow-h">Mined By
+                        <a href='/address/0xea674fdde714fd979de3edf0f56aa9716b898ec8' class='address-tag'>Ethermine</a>
+                        </p>
+                        <p>
+                          <a href="/txs?block=6173354" title="Transactions in this Block">
+                            <b>330 txns</b>
+                          </a> in 7 secs</p>
+                        <p> Block Reward 3
+                          <b>.</b>22904 Ether</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="panel panel-profile no-bg">
+                  <div class="panel-heading overflow-h">
+                    <h2 class="panel-title heading-sm pull-left">
+                      <i class="fa fa-list-alt "></i>최근 기록</h2>
+                    <span style="color: #999999; font-size: 11px; margin-bottom: -20px; padding-bottom: 0px;"></span>
+                  </div>
+                  <div id="scrollbar" class="panel-body no-padding mCustomScrollbar" data-mcs-theme="minimal-dark" style="height: 580px">
+                    <div class="profile-post color-one">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+
+                    <div class="profile-post color-two">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-three">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-four">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-five">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-six">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-one">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-two">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-three">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+                    <div class="profile-post color-four">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">거래번호
+                          <a href="" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'> 1923 </font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; ~ 전에 &nbsp;</span>
+                        </h3>
+                        <p>환자명
+                          <a href='' class='address-tag'> 김 아무개 </a>
+                          병명
+                          <a href='' class='address-tag'> 요추간판탈출증 </a>
+                        </p>
+                        <p>진료 날짜
+                          <a href='' class='address-tag'> 2018.08.16.목 </a>
+                      </div>
+                    </div>
+
+                    <div class="profile-post color-five">
+                      <span class="profile-post-numb">
+                        <i class="fa fa-hdd-o"></i>
+                      </span>
+                      <div class="profile-post-in">
+                        <h3 class="heading-xs">TX#
+                          <a href="/tx/0x15e399b773f086ae9d0c2cdd29ef1897f91cdd2e4d970c10dd1ebab3b2b07792" class='hash-tag-frontpage' title="Transaction Hash">
+                            <font color='#3498db'>0x15e399b773f086ae9d0c2cdd29ef1897f91cdd2e4d970c10dd1ebab3b2b07792</font>
+                          </a>
+                          <span class="pull-right" style="font-size: small">&gt; 23 secs ago &nbsp;</span>
+                        </h3>
+                        <p>From
+                          <a href='/address/0x00f03ba39013e10927b66d2097cdee84c418cdb3' class='address-tag'>0x00f03ba39013e10927b66d2097cdee84c418cdb3</a>
+                          To
+                          <a href='/address/0x12459c951127e0c374ff9105dda097662a027093' class='address-tag'>0x12459c951127e0c374ff9105dda097662a027093</a>
+                        </p>
+                        <p>Amount 0 Ether</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <span id="ContentPlaceHolder1_lblDefConModeContent"></span>
+
+
+              <script type="text/javascript">
+                $(function () {
+                  $("[rel='tooltip']").tooltip({
+                    html: true
+                  });
+                });
+              </script>
+              <div id="push"></div>
+
+
+
+              <script type="text/javascript" src="/assets/combine-js-bottom.js?v=1.11"></script>
+              <script type="text/javascript">
+                var cookieconsent = getCookie("etherscan_cookieconsent");
+                if (cookieconsent != "True") {
+                  document.getElementById("divcookie").style.display = "flex";
+                };
+
+                function getCookie(cname) {
+                  var name = cname + "=";
+                  var ca = document.cookie.split(';');
+                  for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                      c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                      return c.substring(name.length, c.length);
+                    }
+                  }
+                  return "";
+                }
+                $("#btnCookie").click(function () {
+                  $("#divcookie").fadeOut("slow", function () {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (1095 * 24 * 60 * 60 * 1000));
+                    var expires = "expires=" + d.toUTCString();
+                    document.cookie = "etherscan_cookieconsent=True" + ";" + expires + ";path=/";;
+                  });
+                });
+              </script>
+
+
+
+              <script src="{% static 'doctor/js/jquery.min.js' %}" type="text/javascript"></script>
+              <script src="{% static 'doctor/js/jquery.easing.min.js' %}" type="text/javascript"></script>
+              <script src="{% static 'doctor/js/bootstrap.min.js' %}" type="text/javascript"></script>
+              <script src="{% static 'doctor/js/custom.js' %}" type="text/javascript"></script>
+
+
+</body>
+
+</html>
